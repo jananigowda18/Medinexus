@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080e18">
+  <title>MEDI-SYNC | Medical Supply Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-content">
+      <div class="medical-icon">✚</div>
+      <h1>MEDI-SYNC</h1>
+      <p>Connecting healthcare inventory...</p>
+      <div class="progress-bar"><div class="progress"></div></div>
+      <span class="loading-text">Initializing secure workspace...</span>
+    </div>
+  </div>
+
+  <section id="authScreen" class="auth-screen">
+    <div class="auth-brand">
+      <div class="brand-symbol">✚</div>
+      <div><b>MEDI-SYNC</b><span>MEDICAL SUPPLY INTELLIGENCE</span></div>
+    </div>
+    <div class="auth-layout">
+      <div class="auth-copy">
+        <span class="eyebrow">CONNECTED HEALTHCARE OPERATIONS</span>
+        <h1>Every medicine.<br><em>Accounted for.</em></h1>
+        <p>One workspace for medicine inventory, batch traceability, stock movement and supply coordination.</p>
+        <div class="auth-points"><span>✓ Batch & expiry visibility</span><span>✓ Organization inventory</span><span>✓ Requests and transfers</span></div>
+      </div>
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-auth-tab="login">Sign in</button>
+          <button class="auth-tab" data-auth-tab="register">Create account</button>
+          <button class="auth-tab" data-auth-tab="organization">Register organization</button>
+        </div>
+        <form id="loginForm" class="auth-form">
+          <h2>Welcome back</h2><p class="muted">Sign in with the account created in your backend.</p>
+          <label>Email address<input id="loginEmail" type="email" autocomplete="username" placeholder="name@organization.com" required></label>
+          <label>Password<input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password" required></label>
+          <button class="btn primary full" type="submit">Sign in <span>→</span></button>
+        </form>
+        <form id="registerForm" class="auth-form hidden">
+          <h2>Create your user account</h2><p class="muted">Your organization must already exist.</p>
+          <label>Full name<input name="name" required minlength="2" placeholder="Your full name"></label>
+          <label>Email<input name="email" type="email" required placeholder="you@example.com"></label>
+          <label>Password<input name="password" type="password" required minlength="8" placeholder="At least 8 characters"></label>
+          <label>Organization ID<input name="organization_id" required placeholder="Paste organization ID"></label>
+          <label>Backend role<select name="role"><option value="staff">Staff</option><option value="admin">Admin</option><option value="inventory_manager">Inventory manager</option><option value="doctor">Doctor</option><option value="procurement">Procurement</option></select></label>
+          <button class="btn primary full" type="submit">Create account <span>→</span></button>
+        </form>
+        <form id="organizationForm" class="auth-form hidden">
+          <h2>Register organization</h2><p class="muted">Create the organization first, then use its returned ID to create user accounts.</p>
+          <label>Organization name<input name="name" required minlength="2" placeholder="Organization name"></label>
+          <label>Organization code<input name="organization_code" required minlength="2" placeholder="Unique organization code"></label>
+          <label>Organization type<select name="organization_type"><option value="hospital">Hospital</option><option value="pharmacy">Pharmacy</option><option value="clinic">Clinic</option><option value="warehouse">Warehouse</option></select></label>
+          <label>Email<input name="email" type="email" placeholder="contact@organization.com"></label>
+          <label>Phone<input name="phone" placeholder="Contact number"></label>
+          <label>Address<textarea name="address" rows="2" placeholder="Organization address"></textarea></label>
+          <button class="btn primary full" type="submit">Register organization <span>→</span></button>
+          <div id="organizationResult" class="result-box hidden"></div>
+        </form>
+        <div id="authMessage" class="message" role="status"></div>
+        <div class="api-status"><i id="apiDot"></i><span id="apiStatusText">Checking backend connection…</span></div>
+      </div>
+    </div>
+    <footer class="auth-footer">MEDI-SYNC <span>•</span> Medical Supply Intelligence Dashboard</footer>
+  </section>
+
+  <div id="app" class="app hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand"><div class="brand-symbol">✚</div><div><b>MEDI-SYNC</b><small>SUPPLY INTELLIGENCE</small></div></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <div class="org-summary"><span class="org-avatar">+</span><div><b id="orgName">Organization</b><small id="orgCode">Organization workspace</small></div></div>
+      <nav id="sideNav"></nav>
+      <div class="sidebar-bottom"><div class="secure-note"><span>◈</span><div><b>Connected workspace</b><small>Backend API integration</small></div></div><button id="logoutBtn" class="logout-btn">↪ <span>Sign out</span></button></div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <button id="mobileMenu" class="icon-btn" aria-label="Open menu">☰</button>
+        <div class="breadcrumb"><span>Workspace</span><b>/</b><strong id="pageCrumb">Overview</strong></div>
+        <div class="top-actions"><span class="live-pill"><i></i> API CONNECTED</span><div class="user-chip"><div class="user-avatar" id="userAvatar">U</div><div><b id="userName">User</b><small id="userRole">Role</small></div></div></div>
+      </header>
+      <section class="page-wrap">
+        <div id="pageHeading" class="page-heading"></div>
+        <div id="pageContent"><div class="loading-inline">Loading workspace…</div></div>
+      </section>
+      <footer class="app-footer">MEDI-SYNC <span>•</span> Live records are loaded from your connected backend.</footer>
+    </main>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toast" class="toast"></div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
