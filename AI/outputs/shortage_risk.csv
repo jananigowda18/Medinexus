@@ -1,0 +1,91 @@
+facility_id,medicine_id,facility_name,medicine_name,current_stock,forecast_daily_demand,days_of_cover,lead_time_days,predicted_stockout_date,risk_score,risk_level,reorder_qty,criticality
+F02,M08,Yelahanka CHC,Artesunate,127,52.1,2.0,10,2026-10-21,0.999,CRITICAL,1162,3
+F03,M08,Jayanagar PHC,Artesunate,76,26.2,2.6,10,2026-10-21,0.999,CRITICAL,580,3
+F03,M01,Jayanagar PHC,Paracetamol 500mg,404,151.9,2.4,5,2026-10-21,0.992,CRITICAL,2550,2
+F01,M08,City District Hospital,Artesunate,424,84.3,4.3,10,2026-10-23,0.986,CRITICAL,1662,3
+F03,M02,Jayanagar PHC,ORS Sachet,291,111.3,2.2,4,2026-10-21,0.933,CRITICAL,1749,3
+F01,M02,City District Hospital,ORS Sachet,711,237.7,2.6,4,2026-10-21,0.904,CRITICAL,3659,3
+F02,M07,Yelahanka CHC,IV Normal Saline,307,123.9,2.2,4,2026-10-21,0.792,CRITICAL,1972,3
+F02,M01,Yelahanka CHC,Paracetamol 500mg,1257,259.2,4.4,5,2026-10-23,0.711,CRITICAL,3775,2
+F01,M07,City District Hospital,IV Normal Saline,836,225.5,3.3,4,2026-10-22,0.657,CRITICAL,3311,3
+F01,M01,City District Hospital,Paracetamol 500mg,2135,417.5,4.6,5,2026-10-23,0.632,CRITICAL,5980,2
+F01,M05,City District Hospital,Metformin 500mg,1903,252.4,7.5,7,2026-10-26,0.484,HIGH,3571,2
+F03,M07,Jayanagar PHC,IV Normal Saline,424,79.6,4.7,4,2026-10-23,0.461,HIGH,1043,3
+F04,M06,Mysuru District Hospital,Amlodipine 5mg,1463,183.8,7.8,7,2026-10-26,0.426,HIGH,2515,2
+F04,M10,Mysuru District Hospital,Rabies Vaccine,78,6.7,11.1,10,2026-10-30,0.383,MEDIUM,97,3
+F02,M03,Yelahanka CHC,Amoxicillin 500mg,510,72.5,7.2,6,2026-10-26,0.357,MEDIUM,988,2
+F03,M05,Jayanagar PHC,Metformin 500mg,817,95.1,8.4,7,2026-10-27,0.32,MEDIUM,1246,2
+F01,M03,City District Hospital,Amoxicillin 500mg,1145,131.4,8.5,6,2026-10-27,0.145,LOW,1575,2
+F07,M06,Lady Goschen Hospital,Amlodipine 5mg,974,93.8,10.0,7,2026-10-29,0.143,LOW,1057,2
+F07,M08,Lady Goschen Hospital,Artesunate,192,12.5,15.3,10,2026-11-03,0.124,LOW,127,3
+F02,M02,Yelahanka CHC,ORS Sachet,874,139.2,5.7,4,2026-10-24,0.11,LOW,1686,3
+F05,M05,Tumakuru CHC,Metformin 500mg,1437,128.5,10.7,7,2026-10-29,0.102,LOW,1354,2
+F04,M04,Mysuru District Hospital,Cough Syrup,428,51.5,8.2,5,2026-10-27,0.099,LOW,591,1
+F03,M09,Jayanagar PHC,Insulin Vial,123,9.2,12.9,8,2026-10-31,0.081,LOW,94,3
+F02,M09,Yelahanka CHC,Insulin Vial,128,9.7,12.7,8,2026-10-31,0.079,LOW,99,3
+F07,M07,Lady Goschen Hospital,IV Normal Saline,391,42.7,8.9,4,2026-10-27,0.069,LOW,402,3
+F08,M08,Surathkal CHC,Artesunate,239,14.0,17.1,10,2026-11-05,0.059,LOW,117,3
+F04,M07,Mysuru District Hospital,IV Normal Saline,786,80.0,9.6,4,2026-10-28,0.056,LOW,701,3
+F03,M04,Jayanagar PHC,Cough Syrup,215,22.5,9.3,5,2026-10-28,0.042,LOW,232,1
+F07,M10,Lady Goschen Hospital,Rabies Vaccine,71,3.6,19.8,10,2026-11-07,0.028,LOW,24,3
+F05,M10,Tumakuru CHC,Rabies Vaccine,88,4.3,20.4,10,2026-11-08,0.016,LOW,25,3
+F06,M09,Wenlock District Hospital,Insulin Vial,311,18.7,16.6,8,2026-11-04,0.013,LOW,128,3
+F04,M05,Mysuru District Hospital,Metformin 500mg,2928,199.6,14.7,7,2026-11-02,0.011,LOW,1403,2
+F02,M10,Yelahanka CHC,Rabies Vaccine,103,4.8,21.4,10,2026-11-09,0.009,LOW,23,3
+F05,M08,Tumakuru CHC,Artesunate,286,14.1,20.3,10,2026-11-08,0.007,LOW,73,3
+F07,M09,Lady Goschen Hospital,Insulin Vial,178,9.4,19.0,8,2026-11-06,0.004,LOW,44,3
+F08,M06,Surathkal CHC,Amlodipine 5mg,1696,109.7,15.5,7,2026-11-03,0.004,LOW,678,2
+F09,M09,Ullal PHC,Insulin Vial,127,5.7,22.3,8,2026-11-10,0.002,LOW,10,3
+F06,M03,Wenlock District Hospital,Amoxicillin 500mg,1687,113.2,14.9,6,2026-11-02,0.002,LOW,658,2
+F01,M09,City District Hospital,Insulin Vial,451,21.4,21.1,8,2026-11-09,0.001,LOW,49,3
+F08,M09,Surathkal CHC,Insulin Vial,213,9.8,21.8,8,2026-11-09,0.001,LOW,18,3
+F08,M05,Surathkal CHC,Metformin 500mg,2151,123.6,17.4,7,2026-11-05,0.001,LOW,532,2
+F06,M04,Wenlock District Hospital,Cough Syrup,1001,65.4,15.3,5,2026-11-03,0.001,LOW,293,1
+F01,M10,City District Hospital,Rabies Vaccine,316,8.8,36.1,10,2026-11-24,0.0,LOW,0,3
+F03,M10,Jayanagar PHC,Rabies Vaccine,135,3.4,39.4,10,2026-11-27,0.0,LOW,0,3
+F04,M02,Mysuru District Hospital,ORS Sachet,2937,95.9,30.6,4,2026-11-18,0.0,LOW,0,3
+F04,M08,Mysuru District Hospital,Artesunate,3426,25.4,135.0,10,,0.0,LOW,0,3
+F04,M09,Mysuru District Hospital,Insulin Vial,391,16.7,23.4,8,2026-11-11,0.0,LOW,2,3
+F05,M02,Tumakuru CHC,ORS Sachet,1599,56.7,28.2,4,2026-11-16,0.0,LOW,0,3
+F05,M07,Tumakuru CHC,IV Normal Saline,1661,48.4,34.4,4,2026-11-22,0.0,LOW,0,3
+F05,M09,Tumakuru CHC,Insulin Vial,296,10.3,28.7,8,2026-11-16,0.0,LOW,0,3
+F06,M02,Wenlock District Hospital,ORS Sachet,5130,111.0,46.2,4,2026-12-04,0.0,LOW,0,3
+F06,M07,Wenlock District Hospital,IV Normal Saline,1685,97.1,17.4,4,2026-11-05,0.0,LOW,117,3
+F06,M08,Wenlock District Hospital,Artesunate,5227,25.4,206.1,10,,0.0,LOW,0,3
+F06,M10,Wenlock District Hospital,Rabies Vaccine,347,7.6,45.7,10,2026-12-03,0.0,LOW,0,3
+F07,M02,Lady Goschen Hospital,ORS Sachet,2377,51.6,46.1,4,2026-12-04,0.0,LOW,0,3
+F08,M02,Surathkal CHC,ORS Sachet,1294,53.9,24.0,4,2026-11-12,0.0,LOW,0,3
+F08,M07,Surathkal CHC,IV Normal Saline,2086,51.3,40.7,4,2026-11-28,0.0,LOW,0,3
+F08,M10,Surathkal CHC,Rabies Vaccine,157,4.7,33.4,10,2026-11-21,0.0,LOW,0,3
+F09,M02,Ullal PHC,ORS Sachet,431,39.1,10.6,4,2026-10-29,0.0,LOW,295,3
+F09,M07,Ullal PHC,IV Normal Saline,1475,32.0,46.1,4,2026-12-04,0.0,LOW,0,3
+F09,M08,Ullal PHC,Artesunate,1076,7.4,144.6,10,,0.0,LOW,0,3
+F09,M10,Ullal PHC,Rabies Vaccine,70,2.1,33.4,10,2026-11-21,0.0,LOW,0,3
+F01,M06,City District Hospital,Amlodipine 5mg,9502,209.9,45.3,7,2026-12-03,0.0,LOW,0,2
+F02,M05,Yelahanka CHC,Metformin 500mg,20974,140.4,149.4,7,,0.0,LOW,0,2
+F02,M06,Yelahanka CHC,Amlodipine 5mg,3589,128.2,28.0,7,2026-11-15,0.0,LOW,0,2
+F03,M03,Jayanagar PHC,Amoxicillin 500mg,1693,49.5,34.2,6,2026-11-22,0.0,LOW,0,2
+F03,M06,Jayanagar PHC,Amlodipine 5mg,3504,94.2,37.2,7,2026-11-25,0.0,LOW,0,2
+F04,M01,Mysuru District Hospital,Paracetamol 500mg,17312,155.6,111.3,5,,0.0,LOW,0,2
+F04,M03,Mysuru District Hospital,Amoxicillin 500mg,12637,105.0,120.4,6,,0.0,LOW,0,2
+F05,M01,Tumakuru CHC,Paracetamol 500mg,3767,99.7,37.8,5,2026-11-25,0.0,LOW,0,2
+F05,M03,Tumakuru CHC,Amoxicillin 500mg,2543,61.4,41.4,6,2026-11-29,0.0,LOW,0,2
+F05,M06,Tumakuru CHC,Amlodipine 5mg,2920,113.6,25.7,7,2026-11-13,0.0,LOW,0,2
+F06,M01,Wenlock District Hospital,Paracetamol 500mg,2481,196.8,12.0,5,2026-10-31,0.0,LOW,1369,2
+F06,M05,Wenlock District Hospital,Metformin 500mg,10401,224.8,46.3,7,2026-12-04,0.0,LOW,0,2
+F06,M06,Wenlock District Hospital,Amlodipine 5mg,9152,216.8,42.2,7,2026-11-30,0.0,LOW,0,2
+F07,M01,Lady Goschen Hospital,Paracetamol 500mg,3410,88.4,38.6,5,2026-11-26,0.0,LOW,0,2
+F07,M03,Lady Goschen Hospital,Amoxicillin 500mg,1383,58.6,23.6,6,2026-11-11,0.0,LOW,0,2
+F07,M05,Lady Goschen Hospital,Metformin 500mg,12673,104.4,121.4,7,,0.0,LOW,0,2
+F08,M01,Surathkal CHC,Paracetamol 500mg,2916,98.5,29.6,5,2026-11-17,0.0,LOW,0,2
+F08,M03,Surathkal CHC,Amoxicillin 500mg,8119,61.5,131.9,6,,0.0,LOW,0,2
+F09,M01,Ullal PHC,Paracetamol 500mg,967,63.8,15.2,5,2026-11-03,0.0,LOW,284,2
+F09,M03,Ullal PHC,Amoxicillin 500mg,1454,45.1,32.3,6,2026-11-20,0.0,LOW,0,2
+F09,M05,Ullal PHC,Metformin 500mg,12063,84.9,142.1,7,,0.0,LOW,0,2
+F09,M06,Ullal PHC,Amlodipine 5mg,2199,71.2,30.9,7,2026-11-18,0.0,LOW,0,2
+F01,M04,City District Hospital,Cough Syrup,1382,74.8,18.5,5,2026-11-06,0.0,LOW,91,1
+F02,M04,Yelahanka CHC,Cough Syrup,1236,39.8,31.0,5,2026-11-19,0.0,LOW,0,1
+F05,M04,Tumakuru CHC,Cough Syrup,816,31.8,25.6,5,2026-11-13,0.0,LOW,0,1
+F07,M04,Lady Goschen Hospital,Cough Syrup,473,25.7,18.4,5,2026-11-06,0.0,LOW,36,1
+F08,M04,Surathkal CHC,Cough Syrup,892,32.2,27.7,5,2026-11-15,0.0,LOW,0,1
+F09,M04,Ullal PHC,Cough Syrup,663,20.4,32.5,5,2026-11-20,0.0,LOW,0,1

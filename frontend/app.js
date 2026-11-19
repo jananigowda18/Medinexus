@@ -46,11 +46,37 @@ $("#loginForm").addEventListener("submit",async e=>{
     enterApp();await loadPage("overview");
   }catch(err){message(err.message);}finally{b.disabled=false;}
 });
-$("#registerForm").addEventListener("submit",async e=>{
-  e.preventDefault();const d=Object.fromEntries(new FormData(e.currentTarget).entries());
-  try{const r=await api("/api/auth/register",{method:"POST",body:JSON.stringify(d)});message(`Account created. User ID: ${r.user_id}. You can now sign in.`,false);e.currentTarget.reset();}
-  catch(err){message(err.message);}
+
+$("#registerForm").addEventListener("submit", async e => {
+    e.preventDefault();
+
+    // Save the form reference before the API request
+    const form = e.currentTarget;
+    const d = Object.fromEntries(new FormData(form).entries());
+
+    const button = form.querySelector('button[type="submit"]');
+    button.disabled = true;
+
+    try {
+        const r = await api("/api/auth/register", {
+            method: "POST",
+            body: JSON.stringify(d)
+        });
+
+        message(
+            `Account created successfully. User ID: ${r.user_id}. You can now sign in.`,
+            false
+        );
+
+        form.reset();
+
+    } catch (err) {
+        message(err.message, true);
+    } finally {
+        button.disabled = false;
+    }
 });
+
 $("#organizationForm").addEventListener("submit",async e=>{
   e.preventDefault();const d=Object.fromEntries(new FormData(e.currentTarget).entries());
   try{const r=await api("/api/organizations",{method:"POST",body:JSON.stringify(d)});const id=r.id||r._id;$("#organizationResult").classList.remove("hidden");$("#organizationResult").innerHTML=`<b>Organization created successfully</b><br>Name: ${esc(r.name)}<br>Organization ID: <strong>${esc(id)}</strong><br><button class="mini-btn" id="copyOrgId" type="button">Copy organization ID</button><br><small>Use this ID in Create account. Save it safely.</small>`;$("#copyOrgId").onclick=()=>navigator.clipboard.writeText(id).then(()=>toast("Organization ID copied."));}

@@ -12,6 +12,7 @@ import os
 
 from bson import ObjectId
 from fastapi import FastAPI, HTTPException, Query, status, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer
 from jose import jwt, JWTError
@@ -43,6 +44,8 @@ app.add_middleware(
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 JWT_SECRET = os.getenv("JWT_SECRET", "development-only-change-this-secret")
+if os.getenv("APP_ENV", "development").lower() == "production" and (len(JWT_SECRET) < 32 or JWT_SECRET == "development-only-change-this-secret"):
+    raise RuntimeError("Set a unique JWT_SECRET of at least 32 characters before production deployment.")
 JWT_ALGORITHM = "HS256"
 JWT_EXPIRE_MINUTES = int(os.getenv("JWT_EXPIRE_MINUTES", "1440"))
 AI_SERVICE_URL = os.getenv(
@@ -50,6 +53,93 @@ AI_SERVICE_URL = os.getenv(
     "http://127.0.0.1:8001"
 )
 bearer = HTTPBearer(auto_error=False)
+
+PUBLIC_PATHS = {"/", "/api/health", "/api/auth/login", "/api/auth/register", "/docs", "/redoc", "/openapi.json"}
+ORG_SCOPED_PATHS = (
+    "/api/users", "/api/inventory", "/api/batches", "/api/stock-transactions",
+    "/api/medicine-requests", "/api/transfers", "/api/notifications",
+    "/api/audit-logs", "/api/dashboard/summary",
+)
+WRITE_ROLES = {"admin", "inventory_manager"}
+ADMIN_ONLY_PATHS = {"/api/users", "/api/organizations", "/api/audit-logs", "/api/notifications/scan", "/api/medicine-requests/process-priority"}
+
+
+@app.middleware("http")
+async def authenticate_and_authorize(request: Request, call_next):
+    """Validate protected API requests and enforce role/organization boundaries."""
+    # Browser CORS preflight requests must reach CORSMiddleware without authentication.
+    if request.method.upper() == "OPTIONS":
+        return await call_next(request)
+    path = request.url.path
+    if not path.startswith("/api/") or path in PUBLIC_PATHS:
+        return await call_next(request)
+    # One-time bootstrap: allow creating the very first organization before any user exists.
+    if path == "/api/organizations" and request.method.upper() == "POST":
+        try:
+            if mongo.organizations.count_documents({}) == 0:
+                return await call_next(request)
+        except PyMongoError:
+            return JSONResponse({"detail": "Database is unavailable during workspace setup."}, status_code=503)
+
+    auth = request.headers.get("Authorization", "")
+    scheme, _, token = auth.partition(" ")
+    if scheme.lower() != "bearer" or not token:
+        return JSONResponse({"detail": "Authentication required. Please sign in."}, status_code=401)
+    try:
+        payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+        user_id = payload.get("sub")
+        if not user_id or not ObjectId.is_valid(user_id):
+            raise JWTError("Invalid subject")
+        user = mongo.users.find_one({"_id": ObjectId(user_id)})
+        if not user or user.get("status", "active") != "active":
+            return JSONResponse({"detail": "Account is inactive or no longer exists."}, status_code=401)
+    except JWTError:
+        return JSONResponse({"detail": "Invalid or expired access token. Please sign in again."}, status_code=401)
+    except PyMongoError:
+        return JSONResponse({"detail": "Authentication service is temporarily unavailable."}, status_code=503)
+
+    role = user.get("role", "staff")
+    org_id = str(user.get("organization_id", ""))
+    request.state.user = user
+
+    # Only administrators may manage users, organizations, audit logs, and system scans.
+    if path in ADMIN_ONLY_PATHS or path.startswith("/api/organizations"):
+        if role != "admin":
+            return JSONResponse({"detail": "Administrator permission required."}, status_code=403)
+
+    # Read-only clinical users cannot mutate inventory/procurement records.
+    method = request.method.upper()
+    if method in {"POST", "PUT", "PATCH", "DELETE"}:
+        if path.startswith(("/api/stock-in", "/api/stock-out", "/api/inventory", "/api/medicines", "/api/batches", "/api/purchase-orders", "/api/suppliers", "/api/transfers")) and role not in WRITE_ROLES and role != "procurement":
+            return JSONResponse({"detail": "Your role does not have permission to modify this resource."}, status_code=403)
+        if path.startswith("/api/medicine-requests") and role == "doctor" and method != "POST":
+            return JSONResponse({"detail": "Doctors may submit requests but cannot approve or process them."}, status_code=403)
+        if path.startswith("/api/medicine-requests") and (method != "POST" or path.endswith("/process-priority")) and role not in WRITE_ROLES:
+            return JSONResponse({"detail": "Only administrators and inventory managers may review or process requests."}, status_code=403)
+
+    # Bind organization-scoped endpoints to the signed-in user's organization.
+    if role != "admin" and org_id:
+        query = dict(request.query_params)
+        requested_org = query.get("organization_id")
+        if requested_org and requested_org != org_id:
+            return JSONResponse({"detail": "You cannot access another organization's records."}, status_code=403)
+        if path.startswith(ORG_SCOPED_PATHS):
+            query["organization_id"] = org_id
+            from urllib.parse import urlencode
+            request.scope["query_string"] = urlencode(query).encode("utf-8")
+        if method in {"POST", "PUT", "PATCH"} and request.headers.get("content-type", "").startswith("application/json"):
+            try:
+                body = await request.json()
+            except Exception:
+                body = None
+            if isinstance(body, dict):
+                for key in ("organization_id", "from_organization_id"):
+                    value = body.get(key)
+                    if value and str(value) != org_id:
+                        return JSONResponse({"detail": "You cannot modify another organization's records."}, status_code=403)
+                if path.startswith("/api/transfers") and body.get("to_organization_id") and str(body["to_organization_id"]) != org_id:
+                    return JSONResponse({"detail": "A transfer must originate from your organization."}, status_code=403)
+    return await call_next(request)
 
 URGENCY_RANK = {"critical": 4, "high": 3, "medium": 2, "low": 1}
 
@@ -237,7 +327,12 @@ def health():
 
 # AUTHENTICATION AND ORGANIZATIONS
 @app.post("/api/organizations", status_code=201)
-def create_organization(data: OrganizationCreate):
+def create_organization(data: OrganizationCreate, request: Request):
+    # Initial organization setup is allowed only before the first organization exists.
+    if mongo.organizations.count_documents({}) > 0:
+        user = getattr(request.state, "user", None)
+        if not user or user.get("role") != "admin":
+            raise HTTPException(status_code=403, detail="Administrator permission required")
     doc = data.model_dump()
     doc.update({"status": "active", "created_at": now(), "updated_at": now()})
     try:
@@ -259,6 +354,10 @@ def register(data: UserRegister):
     require_exists(mongo.organizations, data.organization_id, "Organization")
     doc = data.model_dump()
     password = doc.pop("password")
+    # Never trust a role supplied by a public registration form. The first account
+    # bootstraps the workspace administrator; all later public registrations are staff.
+    doc["role"] = "admin" if mongo.users.count_documents({}) == 0 else "staff"
+    doc["email"] = doc["email"].lower()
     doc["password_hash"] = pwd_context.hash(password)
     doc.update({"status": "active", "created_at": now(), "updated_at": now()})
     try:
@@ -281,6 +380,15 @@ def login(data: UserLogin):
     return {"access_token": token, "token_type": "bearer", "expires_at": expires.isoformat(),
             "user": {"id": str(user["_id"]), "name": user.get("name"), "email": user.get("email"),
                      "role": user.get("role"), "organization_id": user.get("organization_id")}}
+
+
+@app.get("/api/auth/me")
+def get_current_user(request: Request):
+    user = getattr(request.state, "user", None)
+    if not user:
+        raise HTTPException(status_code=401, detail="Authentication required")
+    return {"id": str(user["_id"]), "name": user.get("name"), "email": user.get("email"),
+            "role": user.get("role", "staff"), "organization_id": user.get("organization_id")}
 
 
 @app.get("/api/users")

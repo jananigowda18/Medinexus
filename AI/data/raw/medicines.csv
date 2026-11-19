@@ -1,0 +1,11 @@
+medicine_id,medicine_name,category,base_daily_demand,shelf_life_days,unit_cost_inr,supplier_id,lead_time_days,season,outbreak_sensitive,cold_chain,criticality
+M01,Paracetamol 500mg,Antipyretic,120,730,0.5,S01,5,none,True,False,2
+M02,ORS Sachet,Rehydration,60,540,8.0,S01,4,monsoon,True,False,3
+M03,Amoxicillin 500mg,Antibiotic,80,540,4.0,S02,6,winter,False,False,2
+M04,Cough Syrup,Respiratory,40,365,35.0,S02,5,winter,True,False,1
+M05,Metformin 500mg,Chronic,150,730,1.2,S03,7,none,False,False,2
+M06,Amlodipine 5mg,Chronic,130,730,1.0,S03,7,none,False,False,2
+M07,IV Normal Saline,IV Fluid,50,540,25.0,S04,4,monsoon,True,False,3
+M08,Artesunate,Antimalarial,15,365,60.0,S04,10,monsoon,True,False,3
+M09,Insulin Vial,Cold Chain,12,270,450.0,S05,8,none,False,True,3
+M10,Rabies Vaccine,Cold Chain,5,365,300.0,S05,10,none,False,True,3

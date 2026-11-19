@@ -1,0 +1,10 @@
+facility_id,facility_name,facility_type,district,size_scale,lat,lon
+F01,City District Hospital,District Hospital,Bengaluru Urban,1.8,12.9716,77.5946
+F02,Yelahanka CHC,CHC,Bengaluru Urban,1.0,13.1007,77.5963
+F03,Jayanagar PHC,PHC,Bengaluru Urban,0.7,12.9308,77.5838
+F04,Mysuru District Hospital,District Hospital,Mysuru,1.5,12.2958,76.6394
+F05,Tumakuru CHC,CHC,Tumakuru,0.9,13.3392,77.114
+F06,Wenlock District Hospital,District Hospital,Dakshina Kannada,1.7,12.87,74.843
+F07,Lady Goschen Hospital,Maternity Hospital,Dakshina Kannada,0.8,12.868,74.842
+F08,Surathkal CHC,CHC,Dakshina Kannada,0.9,12.981,74.795
+F09,Ullal PHC,PHC,Dakshina Kannada,0.6,12.8,74.843

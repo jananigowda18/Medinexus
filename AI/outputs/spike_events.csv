@@ -1,0 +1,3 @@
+region,detected_at,last_alert,status,severity,peak_demand_ratio,affected_medicines,affected_medicine_names,affected_facilities
+Mysuru,2026-01-15,2026-01-24,ENDED,MEDIUM,2.5,"M01,M04",Paracetamol 500mg; Cough Syrup,F04
+Bengaluru Urban,2026-10-07,2026-10-18,ACTIVE,HIGH,3.78,"M01,M02,M04,M07,M08",Paracetamol 500mg; ORS Sachet; Cough Syrup; IV Normal Saline; Artesunate,"F01,F02,F03"

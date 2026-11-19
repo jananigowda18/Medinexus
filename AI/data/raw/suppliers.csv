@@ -1,0 +1,6 @@
+supplier_id,supplier_name,avg_lead_time_days,lead_time_std_days,on_time_rate
+S01,Karnataka Generic Pharma,4,1.0,0.95
+S02,Sunrise Healthcare Distributors,5,1.5,0.9
+S03,Medico Bulk Supplies,7,2.0,0.85
+S04,LifeLine Hospital Supplies,5,2.5,0.78
+S05,ColdChain Biologicals,8,1.5,0.92

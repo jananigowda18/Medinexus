@@ -1,0 +1,91 @@
+facility_id,medicine_id,district,ratio3,z3,spike_flag,spike_multiplier
+F01,M01,Bengaluru Urban,1.89,5.67,True,1.89
+F01,M02,Bengaluru Urban,2.0,7.6,True,2.0
+F01,M03,Bengaluru Urban,0.86,-1.35,False,1.0
+F01,M04,Bengaluru Urban,0.94,-0.72,False,1.0
+F01,M05,Bengaluru Urban,0.83,-1.79,False,1.0
+F01,M06,Bengaluru Urban,1.14,1.88,False,1.0
+F01,M07,Bengaluru Urban,2.27,8.52,True,2.27
+F01,M08,Bengaluru Urban,2.11,5.08,True,2.11
+F01,M09,Bengaluru Urban,0.88,-0.91,False,1.0
+F01,M10,Bengaluru Urban,0.94,-0.25,False,1.0
+F02,M01,Bengaluru Urban,2.33,8.47,True,2.33
+F02,M02,Bengaluru Urban,2.05,8.65,True,2.05
+F02,M03,Bengaluru Urban,0.89,-0.99,False,1.0
+F02,M04,Bengaluru Urban,0.98,-0.15,False,1.0
+F02,M05,Bengaluru Urban,1.03,0.35,False,1.0
+F02,M06,Bengaluru Urban,1.05,0.48,False,1.0
+F02,M07,Bengaluru Urban,2.05,6.09,True,2.05
+F02,M08,Bengaluru Urban,2.97,12.7,True,2.97
+F02,M09,Bengaluru Urban,0.53,-2.16,False,1.0
+F02,M10,Bengaluru Urban,0.46,-1.93,False,1.0
+F03,M01,Bengaluru Urban,2.02,9.72,True,2.02
+F03,M02,Bengaluru Urban,1.99,6.25,True,1.99
+F03,M03,Bengaluru Urban,1.04,0.42,False,1.0
+F03,M04,Bengaluru Urban,1.14,1.03,False,1.0
+F03,M05,Bengaluru Urban,0.95,-0.62,False,1.0
+F03,M06,Bengaluru Urban,1.02,0.21,False,1.0
+F03,M07,Bengaluru Urban,1.6,3.49,False,1.0
+F03,M08,Bengaluru Urban,2.32,7.94,True,2.32
+F03,M09,Bengaluru Urban,0.92,-0.33,False,1.0
+F03,M10,Bengaluru Urban,1.91,2.55,False,1.0
+F04,M01,Mysuru,0.9,-1.06,False,1.0
+F04,M02,Mysuru,0.86,-1.88,False,1.0
+F04,M03,Mysuru,0.89,-1.26,False,1.0
+F04,M04,Mysuru,1.14,0.94,False,1.0
+F04,M05,Mysuru,0.86,-1.46,False,1.0
+F04,M06,Mysuru,0.62,-4.15,False,1.0
+F04,M07,Mysuru,0.91,-0.64,False,1.0
+F04,M08,Mysuru,1.15,1.33,False,1.0
+F04,M09,Mysuru,0.93,-0.43,False,1.0
+F04,M10,Mysuru,1.05,0.16,False,1.0
+F05,M01,Tumakuru,0.86,-1.05,False,1.0
+F05,M02,Tumakuru,0.89,-1.24,False,1.0
+F05,M03,Tumakuru,0.82,-1.26,False,1.0
+F05,M04,Tumakuru,0.93,-0.52,False,1.0
+F05,M05,Tumakuru,0.99,-0.04,False,1.0
+F05,M06,Tumakuru,0.94,-0.61,False,1.0
+F05,M07,Tumakuru,0.99,-0.09,False,1.0
+F05,M08,Tumakuru,0.86,-0.73,False,1.0
+F05,M09,Tumakuru,1.35,1.79,False,1.0
+F05,M10,Tumakuru,2.0,2.34,False,1.0
+F06,M01,Dakshina Kannada,1.09,0.83,False,1.0
+F06,M02,Dakshina Kannada,0.8,-1.69,False,1.0
+F06,M03,Dakshina Kannada,0.94,-0.43,False,1.0
+F06,M04,Dakshina Kannada,1.14,1.03,False,1.0
+F06,M05,Dakshina Kannada,1.0,-0.03,False,1.0
+F06,M06,Dakshina Kannada,0.89,-1.15,False,1.0
+F06,M07,Dakshina Kannada,1.19,1.98,False,1.0
+F06,M08,Dakshina Kannada,0.64,-1.47,False,1.0
+F06,M09,Dakshina Kannada,1.34,2.34,False,1.0
+F06,M10,Dakshina Kannada,1.42,1.29,False,1.0
+F07,M01,Dakshina Kannada,0.97,-0.44,False,1.0
+F07,M02,Dakshina Kannada,0.78,-2.98,False,1.0
+F07,M03,Dakshina Kannada,1.0,0.02,False,1.0
+F07,M04,Dakshina Kannada,0.71,-2.7,False,1.0
+F07,M05,Dakshina Kannada,0.93,-0.57,False,1.0
+F07,M06,Dakshina Kannada,0.91,-1.17,False,1.0
+F07,M07,Dakshina Kannada,0.97,-0.18,False,1.0
+F07,M08,Dakshina Kannada,0.63,-2.24,False,1.0
+F07,M09,Dakshina Kannada,0.79,-1.11,False,1.0
+F07,M10,Dakshina Kannada,0.69,-0.91,False,1.0
+F08,M01,Dakshina Kannada,0.97,-0.22,False,1.0
+F08,M02,Dakshina Kannada,1.0,-0.02,False,1.0
+F08,M03,Dakshina Kannada,0.96,-0.3,False,1.0
+F08,M04,Dakshina Kannada,0.98,-0.14,False,1.0
+F08,M05,Dakshina Kannada,1.14,1.48,False,1.0
+F08,M06,Dakshina Kannada,1.06,0.63,False,1.0
+F08,M07,Dakshina Kannada,0.84,-1.7,False,1.0
+F08,M08,Dakshina Kannada,0.89,-0.65,False,1.0
+F08,M09,Dakshina Kannada,0.82,-0.86,False,1.0
+F08,M10,Dakshina Kannada,1.03,0.09,False,1.0
+F09,M01,Dakshina Kannada,0.94,-0.45,False,1.0
+F09,M02,Dakshina Kannada,0.88,-1.31,False,1.0
+F09,M03,Dakshina Kannada,1.26,2.84,False,1.0
+F09,M04,Dakshina Kannada,0.94,-0.45,False,1.0
+F09,M05,Dakshina Kannada,0.89,-1.01,False,1.0
+F09,M06,Dakshina Kannada,1.04,0.29,False,1.0
+F09,M07,Dakshina Kannada,1.02,0.2,False,1.0
+F09,M08,Dakshina Kannada,0.63,-1.85,False,1.0
+F09,M09,Dakshina Kannada,0.34,-3.0,False,1.0
+F09,M10,Dakshina Kannada,0.71,-0.91,False,1.0

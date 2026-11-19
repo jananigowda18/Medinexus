@@ -1,0 +1,10 @@
+model,horizon,WAPE_pct,sMAPE_pct
+Moving average (7d),All horizons (1-14d),23.96,29.58
+Moving average (7d),Short (1-7d),23.97,29.61
+Moving average (7d),Long (8-14d),23.96,29.55
+Seasonal naive (4-wk same weekday),All horizons (1-14d),19.38,25.02
+Seasonal naive (4-wk same weekday),Short (1-7d),19.15,24.97
+Seasonal naive (4-wk same weekday),Long (8-14d),19.61,25.07
+HistGradientBoosting (sklearn fallback),All horizons (1-14d),17.46,23.2
+HistGradientBoosting (sklearn fallback),Short (1-7d),17.28,23.33
+HistGradientBoosting (sklearn fallback),Long (8-14d),17.64,23.06
